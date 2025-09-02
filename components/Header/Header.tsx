@@ -16,6 +16,9 @@ const Header = () => {
                 <li>
                     <Link href="/notes">Notes</Link>
                 </li>
+                <li>
+                    <Link href="/tagsmenu">TagsMenu</Link>
+                </li>
                 </ul>
             </nav>
         </header>
