@@ -11,17 +11,23 @@ import NoteList from '@/components/NoteList/NoteList';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import css from "./Notes.module.css";
+import { NoteTag } from '@/types/note';
 
-export default function NotesClient() {
+type NotesClientProps = {
+  tag?: NoteTag;
+}
+
+export default function NotesClient({tag}: NotesClientProps) {
   const [search, setSearch] = useState('');
   const [debouncedSearch] = useDebounce(search, 500);
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['notes', page, debouncedSearch],
-    queryFn: () => fetchNotes({ page, perPage: 12, search: debouncedSearch }),
+    queryKey: ['notes', page, debouncedSearch, tag],
+    queryFn: () => fetchNotes({ page, perPage: 12, search: debouncedSearch, tag }),
     placeholderData: keepPreviousData,
+    refetchOnMount: false,
   });
 
   const handleSearchChange = (value: string) => {
