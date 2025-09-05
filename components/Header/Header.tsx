@@ -1,6 +1,6 @@
-import css from "@/components/Header/Header.module.css";
+import TagsMenu from "@/components/TagsMenu/page";
+import css from "./Header.module.css";
 import Link from "next/link";
-
 
 const Header = () => {
     return (
@@ -10,19 +10,16 @@ const Header = () => {
             </Link>
             <nav aria-label="Main Navigation">
                 <ul className={css.navigation}>
-                <li>
-                    <Link href="/">Home</Link>
-                </li>
-                <li>
-                    <Link href="/notes">Notes</Link>
-                </li>
-                <li>
-                    <Link href="/tagsmenu">TagsMenu</Link>
-                </li>
+                    <li>
+                        <Link href="/">Home</Link>
+                    </li>
+                    <li>
+                        <TagsMenu />
+                    </li>
                 </ul>
             </nav>
         </header>
     )
-}
+};
 
 export default Header;
