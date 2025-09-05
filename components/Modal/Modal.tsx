@@ -19,7 +19,6 @@ export default function Modal({ children, onClose }: ModalProps) {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -45,6 +44,6 @@ export default function Modal({ children, onClose }: ModalProps) {
         {children}
       </div>
     </div>,
-    modalRoot
+    document.body
   );
 }
